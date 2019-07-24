@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Example Django</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <h1>!!!!! NEIDY ES FEAAAAAAAAA !!</h1>
+    {% if user.is_authenticated %}
+        <h3>{{ user.username }} | <a href="{% url 'logout' %}">Logout</a></h3>
+    {% else %}
+        <a href="{% url 'create_user' %}">Register</a>
+        |
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</br>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi quos aspernatur quia quo nihil cum, debitis minus atque sapiente consequuntur, architecto, quibusdam beatae rerum neque ipsam voluptatum sunt illo quis.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ut corporis atque, voluptatum placeat vitae illo exercitationem fuga rerum! Explicabo, enim eos quas magnam voluptas quasi deleniti. Odit, beatae cum!
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem modi incidunt perspiciatis eligendi ab quia libero beatae repudiandae! Hic voluptas laboriosam corporis veniam voluptatem sunt voluptatibus, quibusdam illo quidem voluptatum?
+    <br><br>
+    <a href="{% url 'new_product' %}">New Product</a>
+    <ul>
+    
+     
+        {% for i in object_list %}
+            <li><a href="{% url 'product_detail' pk=i.pk %}">{{ i.name }} </a>
+                {{i.description}}
+                <img src="{{ i.image.url }}" alt="">
+            </li>
+        {% endfor %}
+
+    </ul>
+</body>
+</html>
